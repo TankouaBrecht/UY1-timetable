@@ -219,7 +219,7 @@ $("#fetchBranchData").click(function() {
 
 	$.ajax({
 
-		url: "Ajax/teacherview.php",
+		url: "Ajax/teacher_view.php",
 		method: "POST",
 		data: { branchVal:branchVal, branchLevelVal:branchLevelVal },
 		beforeSend: function(){},

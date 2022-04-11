@@ -26,7 +26,7 @@
 		
         <li class="treeview">
           <a href="#">
-            <i data-feather="message-circle"></i>
+            <i data-feather="calendar"></i>
             <span>Time Table</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -40,7 +40,7 @@
 		  
         <li class="treeview">
           <a href="#">
-            <i data-feather="mail"></i> <span>Teacher</span>
+            <i data-feather="user"></i> <span>Teacher</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>

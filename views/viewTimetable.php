@@ -63,7 +63,19 @@
 				</div>
 			</div>
 		</div>
-<br> <select id="new_select"></select>
+<br><div class="container">
+  <h2>View data</h2>
+	<table class="table table-bordered table-sm" >
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody id="table">
+      
+    </tbody>
+  </table>
+</div>
 		<!-- Main content -->
 		<section class="content">
 		<div class="row">
@@ -212,27 +224,28 @@
 //  });
 // }
 
-$("#fetchBranchData").click(function() {
+	$("#fetchBranchData").click(function() {
 
-	var branchVal = $("#branch").val();
-	var branchLevelVal = $("#branchLevel").val();
+		var branchVal = $("#branch").val();
+		var branchLevelVal = $("#branchLevel").val();
 
-	$.ajax({
+		$.ajax({
 
-		url: "Ajax/ajax.php",
-		method: "POST",
-		data: { branchVal:branchVal, branchLevelVal:branchLevelVal },
-		beforeSend: function(){},
-		success: function(response){
+			url: "Ajax/timetable_view.php",
+			method: "POST",
+			data: { branchVal:branchVal, branchLevelVal:branchLevelVal },
+			beforeSend: function(){},
+			success: function(response){
 
-			// console.log(response);
-            document.getElementById("new_select").innerHTML=response; 
-		}
-		
+				// console.log(response);
+				document.getElementById("table").innerHTML=response; 
+			}
+			
+		});
+
 	});
-
-});
-
+// $(document).ready(function() {
+// });
 </script>
 	
 </body>
