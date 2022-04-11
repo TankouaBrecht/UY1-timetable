@@ -1,23 +1,32 @@
-<header class="header" style="background-color: rgb(39, 46, 72);">
+<header class="main-header">
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top pl-30">
       <!-- Sidebar toggle button-->
 	  <div>
-	  <div class="user-profile">
-			<div class="ulogo">
-				 <a href="index.html">
-				  <!-- logo for regular state and mobile devices -->
-					 <div class="d-flex align-items-center justify-content-center">					 	
-						  <img src="../images/logo-dark.png" alt="">
-						  <h3><b>School</b> Manage</h3>
-					 </div>
-				</a>
-			</div>
-        </div>
+		  <ul class="nav">
+			<li class="btn-group nav-item">
+				<a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="push-menu" role="button">
+					<i class="nav-link-icon mdi mdi-menu"></i>
+			    </a>
+			</li>
+			<li class="btn-group nav-item">
+				<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="Full Screen">
+					<i class="nav-link-icon mdi mdi-crop-free"></i>
+			    </a>
+			</li>			
+
+			<li class="btn-group nav-item d-none d-xl-inline-block">
+				<a href="calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
+					<i class="ti-calendar"></i>
+			    </a>
+			</li>
+		  </ul>
 	  </div>
 		
       <div class="navbar-custom-menu r-side">
-        <ul class="nav navbar-nav">		
+        <ul class="nav navbar-nav">
+		  <!-- full Screen -->
+		
 		  <!-- Notifications -->
 		  <li class="dropdown notifications-menu">
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications">
@@ -31,6 +40,9 @@
 						<div>
 							<h4 class="mb-0 mt-0">Notifications</h4>
 						</div>
+						<div>
+							<a href="#" class="text-danger">Clear All</a>
+						</div>
 					</div>
 				</div>
 			  </li>
@@ -40,16 +52,13 @@
 				<ul class="menu sm-scrol">
 				  <li>
 					<a href="#">
-					  HELLO
+					  <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit blandit.
 					</a>
 				  </li>
-				  <li>
-					<a href="#">
-					 SALUT.
-					</a>
-				  </li>
-				
 				</ul>
+			  </li>
+			  <li class="footer">
+				  <a href="#">View all</a>
 			  </li>
 			</ul>
 		  </li>	
