@@ -1,12 +1,12 @@
 <?php
-class Video{
+class Data{
     private $_id;
     private $_name;
-    private $_tenue;
+    private $_email;
     private $_class;
-    private $_tranche1;
-    private $_tranche2;
-    private $_tranche3;
+    private $_phone;
+    private $_sex;
+    private $_adress;
     private $_date;
     public function __construct(array $data){
       $this->hydrate($data);
@@ -32,9 +32,9 @@ class Video{
             $this->_name = $name;
         }
     }
-    public function settenue($tenue){
-        if(is_string($tenue)){
-            $this->_tenue = $tenue;
+    public function setemail($email){
+        if(is_string($email)){
+            $this->_email = $email;
         }
     }
     public function setclass($class){
@@ -43,22 +43,20 @@ class Video{
         }
     }
 
-    public function settranche1($tranche1){
-        $tranche1 = (int) $tranche1;
-        if($tranche1 > 0){
-            $this->_tranche1 = $tranche1;
+    public function setphone($phone){
+        $phone = (int) $phone;
+        if($phone > 0){
+            $this->_phone = $phone;
         }
     }
-    public function settranche2($tranche2){
-        $tranche2 = (int) $tranche2;
-        if($tranche2 > 0){
-            $this->_tranche2 = $tranche2;
+    public function setsex($sex){
+        if(is_string($sex)){
+            $this->_sex = $sex;
         }
     }
-    public function settranche3($tranche3){
-        $tranche3 = (int) $tranche3;
-        if($tranche3 > 0){
-            $this->_tranche3 = $tranche3;
+    public function setadress($adress){
+        if(is_string($adress)){
+            $this->_adress = $adress;
         }
     }
     public function setdate($date){
@@ -71,20 +69,20 @@ class Video{
     public function name(){
         return $this->_name;
     }
-    public function tenue(){
-        return $this->_tenue;
+    public function email(){
+        return $this->_email;
     }
     public function class(){
         return $this->_class;
     }
-    public function tranche1(){
-        return $this->_tranche1;
+    public function phone(){
+        return $this->_phone;
     }
-    public function tranche2(){
-        return $this->_tranche2;
+    public function sex(){
+        return $this->_sex;
     }
-    public function tranche3(){
-        return $this->_tranche3;
+    public function adress(){
+        return $this->_adress;
     }
     public function date(){
         return $this->_date;

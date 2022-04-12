@@ -8,7 +8,7 @@
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="../images/logo-dark.png" alt="">
-						  <h3><b>Time</b> Table</h3>
+						  <h3><b>UY1</b> Time_Table</h3>
 					 </div>
 				</a>
 			</div>
@@ -33,8 +33,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="timetable&action=view"><i class="ti-more"></i>View</a></li>
-            <li><a href="timetable&action=edit"><i class="ti-more"></i>Edit</a></li>
+            <li><a href="timetable&action=view"><i class="ti-more"></i>View Time_table</a></li>
+            <li><a href="timetable_edit"><i class="ti-more"></i>Add Time_table </a></li>
           </ul>
         </li> 
 		  
@@ -46,8 +46,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="teacher&action=view"><i class="ti-more"></i>View</a></li>
-            <li><a href="teacher&action=edit"><i class="ti-more"></i>Edit</a></li>
+            <li><a href="teachers&action=view"><i class="ti-more"></i>View Teacher</a></li>
+            <li><a href="teacher&action=add"><i class="ti-more"></i>Add Teacher</a></li>
           </ul>
         </li>
 		
@@ -60,8 +60,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="course&action=view"><i class="ti-more"></i>View</a></li>
-            <li><a href="course&action=edit"><i class="ti-more"></i>Edit</a></li>
+            <li><a href="course&action=view"><i class="ti-more"></i>View Course</a></li>
+            <li><a href="course&action=add"><i class="ti-more"></i>Add Course</a></li>
           </ul>
         </li> 		  
 		 

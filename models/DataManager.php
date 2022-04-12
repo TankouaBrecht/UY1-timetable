@@ -1,26 +1,26 @@
 <?php
- class VideoManager extends Model{
+ class DataManager extends Model{
 
     // Methode GET pour recuperer les informations dans la BD
     
      public function getLists(){
          $this->getBdd();
-         return $this->getAll('students', 'Video');
+         return $this->getAll('students', 'Data');
      }
      public function getInfobyId($table, $colum, $id, $obj){
         $this->getBdd();
         return $this->getbyId($table, $colum, $id, $obj);
     }
-    public function getvideobydoubleId($table, $colum1, $id1, $colum2, $id2, $obj){
+    public function getDatabydoubleId($table, $colum1, $id1, $colum2, $id2, $obj){
         $this->getBdd();
         return $this->getbydoubleId($table, $colum1, $id1, $colum2, $id2, $obj);
     }
     
     // Methode POST pour stocker les informations dans la BD
 
-    public function postLists($tab){
+    public function postTeachers($tab){
         $this->getBdd();
-        return $this->postAll('students', $tab);
+        return $this->postAll('teachers', $tab);
     }
 
 

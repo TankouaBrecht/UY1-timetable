@@ -1,20 +1,20 @@
 <?php
-class ControllerAdd{
-    private $_videoManager;
+class ControllerTeachers{
+    private $_DataManager;
     private $_view;
     // VERIFIE SI NOTRE URL EST SELECTIONNEE
     public function __construct($url){
         if(isset($url)){
-            $this->profilAdd();
+            $this->teacher();
         }
         else{
              echo('page introuvable');
         }
     }
-    // RECUPERE LES INFORMATIONS CONTENU VideoManager.php
-    private function profilAdd(){
-        
-        require_once('views/viewAdd.php');
+    // RECUPERE LES INFORMATIONS CONTENU DataManager.php
+    private function teacher(){
+
+        require_once('views/viewTeachers.php');
     }
 
 }

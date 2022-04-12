@@ -39,7 +39,7 @@
 	<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Time Tables</h3>
+					<h3 class="page-title">Select Branch & Level</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -65,19 +65,7 @@
 				</div>
 			</div>
 		</div>
-<br><div class="container">
-  <h2>View data</h2>
-	<table class="table table-bordered table-sm" >
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody id="table">
-      
-    </tbody>
-  </table>
-</div>
+<br>
 		<!-- Main content -->
 		<section class="content">
 		<div class="row">
@@ -85,7 +73,7 @@
 			  <div class="col-12">
 			  <div class="box">
 				  <div class="box-header with-border">
-					<h3 class="box-title">Time Table</h3>
+					<h3 class="box-title">All Teacher</h3>
 					<h6 class="box-subtitle">Export data to CSV, Excel, PDF </h6>
 				  </div>
 				  <!-- /.box-header -->
@@ -94,82 +82,18 @@
 						<table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
 						  <thead>
 							  <tr>
-								  <th>Horaire</th>
-								  <th>Lundi</th>
-								  <th>Mardi</th>
-								  <th>Mercredi</th>
-								  <th>Jeudi</th>
-								  <th>Vendredi</th>
-								  <th>Samedi</th>
-								  <th>Dimanche</th>
+								  <th>ID</th>
+								  <th>Full name</th>
+								  <th>Email</th>
+								  <th>Adress</th>
+								  <th>Phone</th>
+								  <th>Gender</th>
+								  <th>Action</th>
 							  </tr>
 						  </thead>
-						  <tbody>
-							  <tr>
-								   <td>07h</td> 
-								  <td>Tiger Nixon <br>
-								  Tiger Nixon <br>
-								  Tiger Nixon
-								  </td>
-								  <td>System Architect</td>
-								  <td>Edinburgh</td>
-								  <td>61</td>
-								  <td>61</td>
-								  <td>2011/04/25</td>
-								  <td>$320,800</td>
-							  </tr>
-							  <tr>
-								   <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
-							  </tr>
-							  <tr>
-								  <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
-							  </tr>
-							  <tr>
-								   <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
-							  </tr>
-							  <tr>
-								 <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
-							  </tr>
-							  <tr>
-								 <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
-							  </tr>
-  
-						  </tbody>				  
+						  <tbody id="table">
+      
+	                      </tbody>
 					  </table>
 					  </div>              
 				  </div>
@@ -233,7 +157,7 @@
 
 		$.ajax({
 
-			url: "Ajax/timetable_view.php",
+			url: "Ajax/teacher_view.php",
 			method: "POST",
 			data: { branchVal:branchVal, branchLevelVal:branchLevelVal },
 			beforeSend: function(){},
@@ -246,6 +170,19 @@
 		});
 
 	});
+$.ajax({
+
+url: "Ajax/teacher_view.php",
+method: "POST",
+data: { },
+beforeSend: function(){},
+success: function(response){
+
+	// console.log(response);
+	document.getElementById("table").innerHTML=response; 
+}
+
+});
 // $(document).ready(function() {
 // });
 </script>

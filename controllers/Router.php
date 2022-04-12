@@ -9,8 +9,8 @@ class Router{
             //    require_once('models/'.$class.'.php');
             // });
             require_once('models/Model.php');
-            require_once('models/VideoManager.php');
-            require_once('models/Video.php');
+            require_once('models/DataManager.php');
+            require_once('models/Data.php');
            
             $url = '';
 

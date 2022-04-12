@@ -1,6 +1,6 @@
 <?php
 class ControllerTeacher{
-    private $_videoManager;
+    private $_DataManager;
     private $_view;
     // VERIFIE SI NOTRE URL EST SELECTIONNEE
     public function __construct($url){
@@ -11,10 +11,8 @@ class ControllerTeacher{
              echo('page introuvable');
         }
     }
-    // RECUPERE LES INFORMATIONS CONTENU VideoManager.php
+    // RECUPERE LES INFORMATIONS CONTENU DataManager.php
     private function teacher(){
-        $this->_videoManager = new VideoManager;
-        $lists = $this->_videoManager->getLists();
         require_once('views/viewTeacher.php');
     }
 

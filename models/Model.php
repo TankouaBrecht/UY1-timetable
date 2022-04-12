@@ -3,8 +3,7 @@ abstract class Model{
     private static $_bdd;
 
     private static function setBdd(){
-        self::$_bdd = new PDO('mysql:host=localhost;dbname=school_manage;charset=utf8',
-        'root','');
+        self::$_bdd = new PDO('mysql:host=localhost;dbname=timetable;charset=utf8', 'root','');
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
@@ -52,31 +51,18 @@ abstract class Model{
     
     // INSERT INTO method
     protected function postAll($table, $obj){
-        $req = 'INSERT INTO '.$table.' (`name`, `tranche1`, `tranche2`, `tranche3`, `class`, `tenue`) 
-        VALUES (:name, :t1, :t2, :t3, :class, :tenue)';
+        $req = 'INSERT INTO '.$table.' (`name`, `email`, `adress`, `phone`, `gender`, `picture`) 
+        VALUES (:name, :email, :adress, :phone, :sex, :pic)';
         $stmt = self::$_bdd->prepare($req);
         $stmt->bindParam(":name", $obj['name']);
-        $stmt->bindParam(":t1", $obj['t1']);
-        $stmt->bindParam(":t2", $obj['t2']);
-        $stmt->bindParam(":t3", $obj['t3']);
-        $stmt->bindParam(":class", $obj['class']);
-        $stmt->bindParam(":tenue", $obj['tenue']);
+        $stmt->bindParam(":email", $obj['email']);
+        $stmt->bindParam(":adress", $obj['adress']);
+        $stmt->bindParam(":phone", $obj['phone']);
+        $stmt->bindParam(":sex", $obj['sex']);
+        $stmt->bindParam(":pic", $obj['pic']);
         $stmt->execute();
     }
 
-    protected function postHistory($table, $obj){
-        $req = 'INSERT INTO '.$table.' (`videoid`, `videotitle`, `channelid`, `channeltitle`, `username`, `thumburl`, `date`) 
-        VALUES (:vid, :vtitle, :cid, :ctitle, :username, :thumburl, :dpublish)';
-        $stmt = self::$_bdd->prepare($req);
-        $stmt->bindParam(":vid", $obj['vid']);
-        $stmt->bindParam(":vtitle", $obj['vtitle']);
-        $stmt->bindParam(":cid", $obj['cid']);
-        $stmt->bindParam(":ctitle", $obj['ctitle']);
-        $stmt->bindParam(":username", $obj['username']);
-        $stmt->bindParam(":thumburl", $obj['turl']);
-        $stmt->bindParam(":dpublish", $obj['dpublish']);
-        $stmt->execute();
-    }
 
     // DELETE methode
     protected function delbyId($table, $colum, $id){
