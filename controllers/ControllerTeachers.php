@@ -5,16 +5,17 @@ class ControllerTeachers{
     // VERIFIE SI NOTRE URL EST SELECTIONNEE
     public function __construct($url){
         if(isset($url)){
-            $this->teacher();
+            $this->view_all_teacher();
         }
         else{
              echo('page introuvable');
         }
     }
     // RECUPERE LES INFORMATIONS CONTENU DataManager.php
-    private function teacher(){
-
-        require_once('views/viewTeachers.php');
+    private function view_all_teacher(){
+        $this->_DataManager = new DataManager;
+        $faculty_list = $this->_DataManager->getFacultyList();
+        require_once('views/viewAllTeacher.php');
     }
 
 }

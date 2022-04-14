@@ -42,12 +42,32 @@
 						      	</div>
                               </div>
                             </div>
-
-							<div class="form-group">
-								<h5>File Input Field <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="file" name="file" class="form-control" > </div>
-							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									<h5>Speciality <span class="text-danger">*</span></h5>
+										<div class="controls">
+											<select id="select" name="fac" class="form-control">
+												<option selected>Select teacher faculty</option>
+												<?php
+												 foreach ($faculty_list as $faculty){
+													?>
+													<option value="<?= $faculty->faculty() ?>"><?= $faculty->faculty() ?></option>
+												 <?php } ?>
+											</select>
+											<span class="text-danger"><?php echo $faculty_alert ?></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<h5>Add profile picture <span class="text-danger">* optional</span></h5>
+										<div class="controls">
+											<input type="file" name="file" class="form-control" >
+										 </div>
+									</div>
+								</div>
+                            </div>
 						</div>
 					  </div>
 						<div class="row">
@@ -68,7 +88,7 @@
 							</div>
 						</div>
 						<div class="text-xs-right">
-							<button type="submit" class="btn btn-rounded btn-info" name="save_teacher">Submit</button>
+							<button type="submit" class="btn btn-rounded btn-info" name="save_teacher">Submit information</button>
 						</div>
 					</form>
 

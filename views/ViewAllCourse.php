@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>Time table | view</title>
+    <title>Course | view</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="src/frontend/css/vendors_css.css">
@@ -32,6 +32,7 @@
   <!-- Left side column. contains the logo and sidebar -->
 
   <?php include"./includes/sidebar.php"?>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <div class="container-full">
@@ -39,23 +40,27 @@
 	<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Select Branch & Level</h3>
+					<h3 class="page-title">Select Faculty & Level</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
 								
 								<li class="breadcrumb-item" aria-current="page">
 								 <select class="form-control select2" name="branch_select" style="width: 100%;" id="branch">
-									<option  selected disabled>Please Select Branch</option>
-									<option>WATOP</option>
+									<option  selected disabled>Please Select Faculty</option>
+									 <?php
+									   foreach ($faculty_list as $faculty){
+										?>
+									  <option value="<?= $faculty->faculty() ?>"><?= $faculty->faculty() ?></option>
+									 <?php } ?>
 								 </select>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">
+                                <li class="breadcrumb-item active" aria-current="page">
 								 <select class="form-control select2" name="level_select" id="branchLevel" style="width: 100%;">
-								    <option selected disabled>Please Select Branch level</option>
-									<option value="L1">L1</option>
-									<option value="L2">L2</option>
-									<option value="L3">L3</option>
+								    <option selected disabled> Select level</option>
+									<option value="1">L1</option>
+									<option value="2">L2</option>
+									<option value="3">L3</option>
 								 </select>
 								</li>
 								<li> <a type="submit" class="btn btn-primary" id="fetchBranchData" style="margin-left: 15px;">Submit</a> </li>
@@ -83,11 +88,11 @@
 						  <thead>
 							  <tr>
 								  <th>ID</th>
-								  <th>Full name</th>
-								  <th>Email</th>
-								  <th>Adress</th>
-								  <th>Phone</th>
-								  <th>Gender</th>
+								  <th>Name</th>
+								  <th>Libelle</th>
+								  <th>Class</th>
+								  <th>Semester</th>
+								  <th>Teacher</th>
 								  <th>Action</th>
 							  </tr>
 						  </thead>
@@ -157,7 +162,7 @@
 
 		$.ajax({
 
-			url: "Ajax/teacher_view.php",
+			url: "Ajax/course_view.php",
 			method: "POST",
 			data: { branchVal:branchVal, branchLevelVal:branchLevelVal },
 			beforeSend: function(){},
@@ -172,7 +177,7 @@
 	});
 $.ajax({
 
-url: "Ajax/teacher_view.php",
+url: "Ajax/course_view.php",
 method: "POST",
 data: { },
 beforeSend: function(){},

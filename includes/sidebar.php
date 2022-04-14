@@ -60,7 +60,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="course&action=view"><i class="ti-more"></i>View Course</a></li>
+            <li><a href="courses&action=view"><i class="ti-more"></i>View Course</a></li>
             <li><a href="course&action=add"><i class="ti-more"></i>Add Course</a></li>
           </ul>
         </li> 		  

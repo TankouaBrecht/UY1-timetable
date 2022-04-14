@@ -5,16 +5,16 @@ class ControllerTimetable_edit{
     // VERIFIE SI NOTRE URL EST SELECTIONNEE
     public function __construct($url){
         if(isset($url)){
-            $this->timetable();
+            $this->Edit_timetable();
         }
         else{
              echo('page introuvable');
         }
     }
     // RECUPERE LES INFORMATIONS CONTENU DataManager.php
-    private function timetable(){
+    private function Edit_timetable(){
 
-        require_once('views/viewTimetable_edit.php');
+        require_once('views/ViewEditTimetable.php');
     }
 
 }

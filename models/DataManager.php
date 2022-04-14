@@ -3,14 +3,16 @@
 
     // Methode GET pour recuperer les informations dans la BD
     
-     public function getLists(){
+     public function getFacultyList(){
          $this->getBdd();
-         return $this->getAll('students', 'Data');
+         return $this->getbyId('class', 'level', '1', 'Data');
      }
+
      public function getInfobyId($table, $colum, $id, $obj){
         $this->getBdd();
         return $this->getbyId($table, $colum, $id, $obj);
     }
+    
     public function getDatabydoubleId($table, $colum1, $id1, $colum2, $id2, $obj){
         $this->getBdd();
         return $this->getbydoubleId($table, $colum1, $id1, $colum2, $id2, $obj);
@@ -20,25 +22,32 @@
 
     public function postTeachers($tab){
         $this->getBdd();
-        return $this->postAll('teachers', $tab);
+        return $this->postTeacher('teachers', $tab);
+    }
+
+    public function postCourses($tab){
+        $this->getBdd();
+        return $this->postCourse('ue', $tab);
     }
 
 
+
+        // Methode Update pour mettre a jour les informations dans la BD
+    public function updateTeacher($name,$adress,$phone,$email,$faculty,$pic,$sex,$id){
+        $this->getBdd();
+        return $this->updateTeachers('teachers',$name,$adress,$phone,$email,$faculty,$pic,$sex,$id);
+    }
+
+    public function updateCourse($name,$libelle,$semester,$class,$level,$teacher,$id){
+        $this->getBdd();
+        return $this->updateCourses('ue',$name,$libelle,$semester,$class,$level,$teacher,$id);
+    }
+
+        
     // Methode DEL pour supprimer les informations dans la BD
     public function desabonne($table, $colum, $id){
         $this->getBdd();
         return $this->delbyId($table, $colum, $id);
     }
-
-        // Methode Update pour mettre a jour les informations dans la BD
-        public function upAll($name,$t1,$t2,$t3,$class,$tenue,$id){
-            $this->getBdd();
-            return $this->updateAll($name,$t1,$t2,$t3,$class,$tenue,$id);
-        }
-
-        public function upbyId($table,$colum,$val,$colum2,$id){
-            $this->getBdd();
-            return $this->updatebyId($table,$colum,$val,$colum2,$id);
-        }
  }
 ?>

@@ -1,36 +1,19 @@
+<?php
+
+$teachers = $this->_DataManager->getInfobyId('teachers','id',$id,'Data');
+foreach($teachers as $teacher){
+	$name = $teacher->name();
+	$email = $teacher->email();
+	$adress = $teacher->adress();
+	$phone = $teacher->phone();
+	$faculty = $teacher->faculty();
+}
+?>
 <div class="content-wrapper">
 	  <div class="container-full">
-	<!-- Content Header (Page header) -->
-	<div class="content-header">
-         <form method="POST">
-			<div class="d-flex align-items-center">
-				<div class="mr-auto">
-					<h3 class="page-title">Select Branch & Level</h3>
-					<div class="d-inline-block align-items-center">
-						<nav>
-							<ol class="breadcrumb">
-								
-								<li class="breadcrumb-item" aria-current="page">
-								 <select class="form-control select2" name="branch_select" style="width: 100%;" >
-									<option  selected disabled>Please Select Branch</option>
-									<option>WATOP</option>
-								 </select>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-								 <select class="form-control select2" name="level_select" style="width: 100%;">
-								    <option selected disabled>Please Select Branch level</option>
-									<option value="10">10</option>
-								 </select>
-								</li>
-							</ol> 
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!-- Main content -->
 		<section class="content">
-
+		<form method="POST" >
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
@@ -47,35 +30,56 @@
 							<div class="form-group">
 								<h5>Full Name <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="text" name="name" class="form-control" required data-validation-required-message="This field is required"> </div>
+									<input type="text" name="fullname" class="form-control" required data-validation-required-message="Full name is required" value="<?= $name ?>"> </div>
 							</div>
 							<div class="form-group">
 								<h5>Email  <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="email" name="email" class="form-control" required data-validation-required-message="This field is required"> </div>
+									<input type="email" name="email" class="form-control" required data-validation-required-message="Email is required" value="<?= $email ?>"> </div>
 							</div>
                             <div class="row">
 							  <div class="col-md-6">
                                 <div class="form-group">
 								 <h5>Adress <span class="text-danger">*</span></h5>
 								 <div class="controls">
-									<input type="text" name="adress" class="form-control" required data-validation-required-message="This field is required"> </div>
+									<input type="text" name="adress" class="form-control" required data-validation-required-message="Adress is required" value="<?= $adress ?>"> </div>
 							    </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
 								<h5>Phone<span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="text" name="phone" data-validation-match-match="password" class="form-control" required> </div>
+									<input type="text" name="phone" required data-validation-required-message="Phone number is required" class="form-control" required  value="<?= $phone ?>"> </div>
 						      	</div>
                               </div>
                             </div>
-
-							<div class="form-group">
-								<h5>File Input Field <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="file" name="file" class="form-control" required> </div>
-							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									<h5>Speciality <span class="text-danger">*</span></h5>
+										<div class="controls">
+											<select  id="select" name="fac" class="form-control">
+												<option selected>Select teacher faculty</option>
+												<?php
+												 foreach ($faculty_list as $faculty){
+													?>
+													<option value="<?= $faculty->faculty() ?>"><?= $faculty->faculty() ?></option>
+												 <?php } ?>
+												
+											</select>
+											<span class="text-danger"><?php echo $faculty_alert ?></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<h5>Add profile picture <span class="text-danger">* optional</span></h5>
+										<div class="controls">
+											<input type="file" name="file" class="form-control" >
+										 </div>
+									</div>
+								</div>
+                            </div>
 						</div>
 					  </div>
 						<div class="row">
@@ -84,7 +88,7 @@
 									<h5>Gender <span class="text-danger">*</span></h5>
 									<div class="controls">
 										<fieldset>
-											<input type="checkbox" id="checkbox_2" name="sex" required value="male">
+											<input type="checkbox" id="checkbox_2" name="sex"  value="male">
 											<label for="checkbox_2">Male</label>
 										</fieldset>
 										<fieldset>
@@ -96,7 +100,7 @@
 							</div>
 						</div>
 						<div class="text-xs-right">
-							<button type="submit" class="btn btn-rounded btn-info">Submit</button>
+							<button type="submit" class="btn btn-rounded btn-info" name="update_teacher">Update information</button>
 						</div>
 					</form>
 
@@ -111,13 +115,6 @@
 
 		</section>
 	<!-- /.content -->
-	  
-
 <!-- ./wrapper -->
-
-	
-
-	
-
 	  </div>
   </div>

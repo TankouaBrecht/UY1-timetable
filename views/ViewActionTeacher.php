@@ -1,17 +1,44 @@
 <?php
-
+if(isset($_GET['id'])){
+	$id = $_GET['id'];
+}else{
+	$id='';
+}
+$faculty_alert="";
 $teachermanager = new DataManager();
+
 if(isset($_POST['save_teacher'])){
+	$tab['name'] =   $_POST['fullname'];
+	$tab['email'] =  $_POST['email'];
+	$tab['adress'] = $_POST ['adress'];
+	$tab['phone'] =  $_POST['phone'];
+	$tab['sex'] =    $_POST['sex'];
+	$tab['pic'] =  'none';
+	$tab['fac'] =    $_POST['fac'];
+	
+	if($_POST['fac']=='Select teacher faculty'){
+		$faculty_alert="Speciality is required";
+	}else{
+		$teachermanager->postTeachers($tab);
+		header('Location:teachers'); 
+	}
+	
+}
 
-$tab['name'] =   $_POST['fullname'];
-$tab['email'] =  $_POST['email'];
-$tab['adress'] = $_POST ['adress'];
-$tab['phone'] =  $_POST['phone'];
-$tab['sex'] =    $_POST['sex'];
-$tab['pic'] =  'none';
-$teachermanager->postTeachers($tab);
-
-header('Location:teachers'); 
+if(isset($_POST['update_teacher'])){
+	$name =   $_POST['fullname'];
+	$email =  $_POST['email'];
+	$adress = $_POST ['adress'];
+	$phone =  $_POST['phone'];
+	$sex =    $_POST['sex'];
+	$pic =    'none';
+	$fac =    $_POST['fac'];
+	if($_POST['fac']=='Select teacher faculty'){
+		$faculty_alert="Speciality is required";
+	}else{
+		$teachermanager->updateTeacher($name,$email,$adress,$phone,$sex,$pic,$fac,$id);
+		header('Location:teachers'); 
+	}
 
 }
 

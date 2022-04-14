@@ -2,7 +2,12 @@
 class Data{
     private $_id;
     private $_name;
+    private $_faculty;
     private $_email;
+    private $_libelle;
+    private $_semester;
+    private $_level;
+    private $_teacher;
     private $_class;
     private $_phone;
     private $_sex;
@@ -27,9 +32,36 @@ class Data{
             $this->_id = $id;
         }
     }
+    public function setlevel($level){
+        $level = (int) $level;
+        if($level > 0){
+            $this->_level = $level;
+        }
+    }
+    public function setsemester($semester){
+        $semester = (int) $semester;
+        if($semester > 0){
+            $this->_semester = $semester;
+        }
+    }
     public function setname($name){
         if(is_string($name)){
             $this->_name = $name;
+        }
+    }
+    public function setfaculty($faculty){
+        if(is_string($faculty)){
+            $this->_faculty = $faculty;
+        }
+    }
+    public function setlibelle($libelle){
+        if(is_string($libelle)){
+            $this->_libelle = $libelle;
+        }
+    }
+    public function setteacher($teacher){
+        if(is_string($teacher)){
+            $this->_teacher = $teacher;
         }
     }
     public function setemail($email){
@@ -66,8 +98,23 @@ class Data{
     public function id(){
         return $this->_id;
     }
+    public function level(){
+        return $this->_level;
+    }
+    public function semester(){
+        return $this->_semester;
+    }
     public function name(){
         return $this->_name;
+    }
+    public function faculty(){
+        return $this->_faculty;
+    }
+    public function teacher(){
+        return $this->_teacher;
+    }
+    public function libelle(){
+        return $this->_libelle;
     }
     public function email(){
         return $this->_email;

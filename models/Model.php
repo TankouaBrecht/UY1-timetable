@@ -17,7 +17,7 @@ abstract class Model{
     // SELECT method
     protected function getAll($table, $obj){
         $var = [];
-        $req = self::$_bdd->prepare('SELECT * FROM '.$table.' ORDER BY name desc');
+        $req = self::$_bdd->prepare('SELECT * FROM '.$table.' ORDER BY faculty desc');
         $req->execute();
         while($data = $req->fetch(PDO::FETCH_ASSOC)){
             $var[] = new $obj($data);
@@ -50,9 +50,9 @@ abstract class Model{
 
     
     // INSERT INTO method
-    protected function postAll($table, $obj){
-        $req = 'INSERT INTO '.$table.' (`name`, `email`, `adress`, `phone`, `gender`, `picture`) 
-        VALUES (:name, :email, :adress, :phone, :sex, :pic)';
+    protected function postTeacher($table, $obj){
+        $req = 'INSERT INTO '.$table.' (`name`, `email`, `adress`, `phone`, `gender`, `picture`,`faculty`) 
+        VALUES (:name, :email, :adress, :phone, :sex, :pic, :fac)';
         $stmt = self::$_bdd->prepare($req);
         $stmt->bindParam(":name", $obj['name']);
         $stmt->bindParam(":email", $obj['email']);
@@ -60,6 +60,20 @@ abstract class Model{
         $stmt->bindParam(":phone", $obj['phone']);
         $stmt->bindParam(":sex", $obj['sex']);
         $stmt->bindParam(":pic", $obj['pic']);
+        $stmt->bindParam(":fac", $obj['fac']);
+        $stmt->execute();
+    }
+
+    protected function postCourse($table, $obj){
+        $req = 'INSERT INTO '.$table.' (`name`, `libelle`, `semester`, `class`, `level`,`teacher`) 
+        VALUES (:name, :libelle, :semester, :class, :level, :teacher)';
+        $stmt = self::$_bdd->prepare($req);
+        $stmt->bindParam(":name", $obj['name']);
+        $stmt->bindParam(":libelle", $obj['libelle']);
+        $stmt->bindParam(":semester", $obj['semester']);
+        $stmt->bindParam(":class", $obj['class']);
+        $stmt->bindParam(":level", $obj['level']);
+        $stmt->bindParam(":teacher", $obj['teacher']);
         $stmt->execute();
     }
 
@@ -76,8 +90,14 @@ abstract class Model{
         $req->execute();
         $req->closeCursor(); 
     }
-    protected function updateAll($name,$t1,$t2,$t3,$class,$tenue,$id){
-        $req = self::$_bdd->prepare("UPDATE `students` SET `name`='$name',`tranche1`='$t1',`tranche2`='$t2',`tranche3`='$t3',`class`='$class',`tenue`='$tenue' WHERE `id`='$id' ");
+    protected function updateTeachers($table,$name,$adress,$phone,$email,$faculty,$pic,$sex,$id){
+        $req = self::$_bdd->prepare("UPDATE `$table` SET `name`='$name',`adress`='$adress',`phone`='$phone',`email`='$email',`faculty`='$faculty',`picture`='$pic',`gender`='$sex' WHERE `id`='$id' ");
+        $req->execute();
+        $req->closeCursor(); 
+    }
+
+    protected function updateCourses($table,$name,$libelle,$semester,$class,$level,$teacher,$id){
+        $req = self::$_bdd->prepare("UPDATE `$table` SET `name`='$name',`libelle`='$libelle',`semester`='$semester',`class`='$class',`level`='$level',`teacher`='$teacher' WHERE `id`='$id' ");
         $req->execute();
         $req->closeCursor(); 
     }
