@@ -1,3 +1,28 @@
+<?php
+
+function horaire($val1,$val2){
+	$DataManager = new DataManager();
+	$btn_modal = "";
+	$datas = $DataManager->getDatasbyId('course', 'day', $val1, 'time', $val2, 'Data');
+	$count = count($datas);
+	if($count==0){
+	   echo	$btn_modal;
+	}else{
+		foreach($datas as $val){
+		    $result1=$val->id_amphi();
+			$result2=$val->id_ue();
+			$result3=$val->id_teacher();
+			echo"<p style='font-size: 15px !important';>
+			<span> $result1 </span><br>
+			<span> $result2 </span><br>
+			<span> Dr $result3 </span>
+			</p>";
+
+		}
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,11 +41,9 @@
 	<!-- Style-->  
 	<link rel="stylesheet" href="src/frontend/css/style.css">
 	<link rel="stylesheet" href="src/frontend/css/skin_color.css">
-     <style>
-		 /* tr{
-			 color: white !important;
-		 } */
-	 </style>
+    <style>
+     th, td{text-align: center !important;}
+    </style>
   </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -92,83 +115,80 @@
 				  <div class="box-body">
 					  <div class="table-responsive">
 						<table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
-						  <thead>
+						<thead>
 							  <tr>
 								  <th>Horaire</th>
-								  <th>Lundi</th>
-								  <th>Mardi</th>
-								  <th>Mercredi</th>
-								  <th>Jeudi</th>
-								  <th>Vendredi</th>
-								  <th>Samedi</th>
-								  <th>Dimanche</th>
+								  <th>Monday</th>
+								  <th>Tuesday</th>
+								  <th>Wenesday</th>
+								  <th>Thursday</th>
+								  <th>friday</th>
+								  <th>Saturday</th>
+								  <th>Sunday</th>
 							  </tr>
 						  </thead>
 						  <tbody>
 							  <tr>
-								   <td>07h</td> 
-								  <td>Tiger Nixon <br>
-								  Tiger Nixon <br>
-								  Tiger Nixon
-								  </td>
-								  <td>System Architect</td>
-								  <td>Edinburgh</td>
-								  <td>61</td>
-								  <td>61</td>
-								  <td>2011/04/25</td>
-								  <td>$320,800</td>
+								 <td style="font-size: 12px !important;">07H00-9H55</td> 
+								  <td><?php horaire('monday','07H00-9H55')?></td>
+								  <td><?php horaire('tuesday','07H00-9H55')?></td>
+								  <td><?php horaire('wenesday','07H00-9H55')?></td>
+								  <td><?php horaire('thursday','07H00-9H55')?></td>
+								  <td><?php horaire('friday','07H00-9H55')?></td>
+								  <td><?php horaire('saturday','07H00-9H55')?></td>
+								  <td><?php horaire('sunday','07H00-9H55')?></td>
 							  </tr>
 							  <tr>
-								   <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
+								 <td style="font-size: 12px !important;">10H-12H55</td> 
+								 <td><?php horaire('monday','10H-12H555')?></td>
+								  <td><?php horaire('tuesday','10H-12H555')?></td>
+								  <td><?php horaire('wenesday','10H-12H555')?></td>
+								  <td><?php horaire('thursday','10H-12H555')?></td>
+								  <td><?php horaire('friday','10H-12H555')?></td>
+								  <td><?php horaire('saturday','10H-12H555')?></td>
+								  <td><?php horaire('sunday','10H-12H555')?></td>
 							  </tr>
 							  <tr>
-								  <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
+								 <td style="font-size: 12px !important;">13H-15H55</td> 
+								  <td><?php horaire('monday','13H-15H55')?></td>
+								  <td><?php horaire('tuesday','13H-15H55')?></td>
+								  <td><?php horaire('wenesday','13H-15H55')?></td>
+								  <td><?php horaire('thursday','13H-15H55')?></td>
+								  <td><?php horaire('friday','13H-15H55')?></td>
+								  <td><?php horaire('saturday','13H-15H55')?></td>
+								  <td><?php horaire('sunday','13H-15H55')?></td>
 							  </tr>
 							  <tr>
-								   <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
+								 <td style="font-size: 12px !important;">16H-18H55</td> 
+								  <td><?php horaire('monday','16H-18H55')?></td>
+								  <td><?php horaire('tuesday','16H-18H55')?></td>
+								  <td><?php horaire('wenesday','16H-18H55')?></td>
+								  <td><?php horaire('thursday','16H-18H55')?></td>
+								  <td><?php horaire('friday','16H-18H55')?></td>
+								  <td><?php horaire('saturday','16H-18H55')?></td>
+								  <td><?php horaire('sunday','16H-18H55')?></td>
 							  </tr>
 							  <tr>
-								 <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
+								 <td style="font-size: 12px !important;">19H-21H55</td> 
+								  <td><?php horaire('monday','19H-21H55')?></td>
+								  <td><?php horaire('tuesday','19H-21H55')?></td>
+								  <td><?php horaire('wenesday','19H-21H55')?></td>
+								  <td><?php horaire('thursday','19H-21H55')?></td>
+								  <td><?php horaire('friday','19H-21H55')?></td>
+								  <td><?php horaire('saturday','19H-21H55')?></td>
+								  <td><?php horaire('sunday','19H-21H55')?></td>
 							  </tr>
+
 							  <tr>
-								 <td>07h</td> 
-								  <td>Finn Camacho</td>
-								  <td>Support Engineer</td>
-								  <td>San Francisco</td>
-								  <td>47</td>
-								  <td>61</td>
-								  <td>2009/07/07</td>
-								  <td>$87,500</td>
-							  </tr>
-  
+								 <td style="font-size: 12px !important;">07H00-9H55</td> 
+								  <td><?php horaire('monday','07H00-9H55')?></td>
+								  <td><?php horaire('tuesday','07H00-9H55')?></td>
+								  <td><?php horaire('wenesday','07H00-9H55')?></td>
+								  <td><?php horaire('thursday','07H00-9H55')?></td>
+								  <td><?php horaire('friday','07H00-9H55')?></td>
+								  <td><?php horaire('saturday','07H00-9H55')?></td>
+								  <td><?php horaire('sunday','07H00-9H55')?></td>
+							  </tr>  
 						  </tbody>				  
 					  </table>
 					  </div>              

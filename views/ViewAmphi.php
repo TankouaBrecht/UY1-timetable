@@ -1,46 +1,14 @@
 <?php
-if(isset($_GET['id'])){
-	$id = $_GET['id'];
-}else{
-	$id='';
-}
-$faculty_alert="";
-$teachermanager = new DataManager();
 
-if(isset($_POST['save_teacher'])){
-	$tab['name'] =   $_POST['fullname'];
-	$tab['email'] =  $_POST['email'];
-	$tab['adress'] = $_POST ['adress'];
-	$tab['phone'] =  $_POST['phone'];
-	$tab['sex'] =    $_POST['sex'];
-	$tab['pic'] =  'none';
-	$tab['fac'] =    $_POST['fac'];
+if(isset($_POST['save_amphi'])){
+	$tab['name'] =   $_POST['name'];
+	$tab['capacity'] =  $_POST['capacity'];
 	
-	if($_POST['fac']=='Select teacher faculty'){
-		$faculty_alert="Speciality is required";
-	}else{
-		$teachermanager->postTeachers($tab);
-		header('Location:teachers'); 
-	}
+    $this->_DataManager->postAmphis($tab);
+	header('Location:amphi'); 
 	
 }
 
-if(isset($_POST['update_teacher'])){
-	$name =   $_POST['fullname'];
-	$email =  $_POST['email'];
-	$adress = $_POST ['adress'];
-	$phone =  $_POST['phone'];
-	$sex =    $_POST['sex'];
-	$pic =    'none';
-	$fac =    $_POST['fac'];
-	if($_POST['fac']=='Select teacher faculty'){
-		$faculty_alert="Speciality is required";
-	}else{
-		$teachermanager->updateTeacher($name,$email,$adress,$phone,$fac,$pic,$sex,$id);
-		header('Location:teachers'); 
-	}
-
-}
 
 ?>
 
@@ -54,7 +22,7 @@ if(isset($_POST['update_teacher'])){
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>Teacher | Add</title>
+    <title>Amphi | View</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="src/frontend/css/vendors_css.css">
@@ -62,11 +30,9 @@ if(isset($_POST['update_teacher'])){
 	<!-- Style-->  
 	<link rel="stylesheet" href="src/frontend/css/style.css">
 	<link rel="stylesheet" href="src/frontend/css/skin_color.css">
-     <style>
-		 /* tr{
-			 color: white !important;
-		 } */
-	 </style>
+    <style>
+     th, td{text-align: center !important;}
+    </style>
   </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -79,13 +45,13 @@ if(isset($_POST['update_teacher'])){
 
   <?php include"./includes/sidebar.php"?>
   <!-- Content Wrapper. Contains page content -->
-<?php
+  <?php
 if(isset($_GET['action'])){
 	$action = $_GET['action'];
-	if($action == 'add'){
-        include"./includes/teacher_add.php";
+	if($action == 'edit'){
+        include"./includes/amphi_edit.php";
 	}else{
-		include"./includes/teacher_edit.php";
+		include"./includes/amphi_view.php";
 	}
 }
 ?>
@@ -102,9 +68,22 @@ if(isset($_GET['action'])){
 	<!-- Sunny Admin App -->
 	<script src="./src/frontend/js/template.js"></script>
 	<script src="./src/frontend/js/pages/dashboard.js"></script>
-	
-// $(document).ready(function() {
-// });
+
+<script type="text/javascript">	
+$.ajax({
+
+url: "Ajax/amphi_view.php",
+method: "POST",
+data: { },
+beforeSend: function(){},
+success: function(response){
+
+	// console.log(response);
+	document.getElementById("table").innerHTML=response; 
+}
+
+});
+</script>
 
 	
 </body>

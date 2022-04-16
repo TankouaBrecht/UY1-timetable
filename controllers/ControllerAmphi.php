@@ -1,22 +1,20 @@
 <?php
-class ControllerTimetable_edit{
+class ControllerAmphi{
     private $_DataManager;
     private $_view;
     // VERIFIE SI NOTRE URL EST SELECTIONNEE
     public function __construct($url){
         if(isset($url)){
-            $this->Edit_timetable();
+            $this->Amphi();
         }
         else{
              echo('page introuvable');
         }
     }
     // RECUPERE LES INFORMATIONS CONTENU DataManager.php
-    private function Edit_timetable(){
+    private function Amphi(){
         $this->_DataManager = new DataManager;
-        $amphi_list = $this->_DataManager->getAmphiList();
-        $uelist = $this->_DataManager->getUeList();
-        require_once('views/ViewEditTimetable.php');
+        require_once('views/viewAmphi.php');
     }
 
 }

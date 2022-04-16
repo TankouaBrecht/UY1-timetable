@@ -114,11 +114,6 @@
 	  
 
 <!-- ./wrapper -->
-
-	
-
-	
-
 	  </div>
   </div>
   <!-- /.content-wrapper -->

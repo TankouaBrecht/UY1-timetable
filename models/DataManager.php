@@ -5,15 +5,23 @@
     
      public function getFacultyList(){
          $this->getBdd();
-         return $this->getbyId('class', 'level', '1', 'Data');
+         return $this->getAllFaculty('class','Data');
      }
+     public function getAmphiList(){
+        $this->getBdd();
+        return $this->getAll('amphi','Data');
+    }
+    public function getUeList(){
+        $this->getBdd();
+        return $this->getAll('ue','Data');
+    }
 
      public function getInfobyId($table, $colum, $id, $obj){
         $this->getBdd();
         return $this->getbyId($table, $colum, $id, $obj);
     }
     
-    public function getDatabydoubleId($table, $colum1, $id1, $colum2, $id2, $obj){
+    public function getDatasbyId($table, $colum1, $id1, $colum2, $id2, $obj){
         $this->getBdd();
         return $this->getbydoubleId($table, $colum1, $id1, $colum2, $id2, $obj);
     }
@@ -30,12 +38,27 @@
         return $this->postCourse('ue', $tab);
     }
 
+    public function postAmphis($tab){
+        $this->getBdd();
+        return $this->postAmphi('amphi', $tab);
+    }
+
+    public function postCl($tab){
+        $this->getBdd();
+        return $this->postClass('class', $tab);
+    }
+
+    public function postTimes($tab){
+        $this->getBdd();
+        return $this->postTimetable('course', $tab);
+    }
+
 
 
         // Methode Update pour mettre a jour les informations dans la BD
-    public function updateTeacher($name,$adress,$phone,$email,$faculty,$pic,$sex,$id){
+    public function updateTeacher($name,$email,$adress,$phone,$faculty,$pic,$sex,$id){
         $this->getBdd();
-        return $this->updateTeachers('teachers',$name,$adress,$phone,$email,$faculty,$pic,$sex,$id);
+        return $this->updateTeachers('teachers',$name,$email,$adress,$phone,$faculty,$pic,$sex,$id);
     }
 
     public function updateCourse($name,$libelle,$semester,$class,$level,$teacher,$id){

@@ -17,7 +17,18 @@ abstract class Model{
     // SELECT method
     protected function getAll($table, $obj){
         $var = [];
-        $req = self::$_bdd->prepare('SELECT * FROM '.$table.' ORDER BY faculty desc');
+        $req = self::$_bdd->prepare('SELECT * FROM '.$table.' ORDER BY name desc');
+        $req->execute();
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $var[] = new $obj($data);
+        }
+        return $var;
+        $req->closeCursor(); 
+    }
+
+    protected function getAllFaculty($table, $obj){
+        $var = [];
+        $req = self::$_bdd->prepare('SELECT DISTINCT faculty FROM '.$table.' ORDER BY faculty desc');
         $req->execute();
         while($data = $req->fetch(PDO::FETCH_ASSOC)){
             $var[] = new $obj($data);
@@ -77,6 +88,37 @@ abstract class Model{
         $stmt->execute();
     }
 
+    protected function postAmphi($table, $obj){
+        $req = 'INSERT INTO '.$table.' (`name`, `capacity`) 
+        VALUES (:name, :capacity)';
+        $stmt = self::$_bdd->prepare($req);
+        $stmt->bindParam(":name", $obj['name']);
+        $stmt->bindParam(":capacity", $obj['capacity']);
+        $stmt->execute();
+    }
+
+    protected function postClass($table, $obj){
+        $req = 'INSERT INTO '.$table.' (`faculty`,`level`, `capacity`) 
+        VALUES (:faculty, :level, :capacity)';
+        $stmt = self::$_bdd->prepare($req);
+        $stmt->bindParam(":faculty", $obj['faculty']);
+        $stmt->bindParam(":level", $obj['level']);
+        $stmt->bindParam(":capacity", $obj['capacity']);
+        $stmt->execute();
+    }
+
+    protected function postTimetable($table, $obj){
+        $req = 'INSERT INTO '.$table.' (`id_ue`,`id_amphi`,`id_teacher`, `time`, `day`) 
+        VALUES (:ue, :amphi, :teacher, :time, :day)';
+        $stmt = self::$_bdd->prepare($req);
+        $stmt->bindParam(":ue", $obj['ue']);
+        $stmt->bindParam(":amphi", $obj['amphi']);
+        $stmt->bindParam(":teacher", $obj['teacher']);
+        $stmt->bindParam(":time", $obj['time']);
+        $stmt->bindParam(":day", $obj['day']);
+        $stmt->execute();
+    }
+
 
     // DELETE methode
     protected function delbyId($table, $colum, $id){
@@ -90,8 +132,8 @@ abstract class Model{
         $req->execute();
         $req->closeCursor(); 
     }
-    protected function updateTeachers($table,$name,$adress,$phone,$email,$faculty,$pic,$sex,$id){
-        $req = self::$_bdd->prepare("UPDATE `$table` SET `name`='$name',`adress`='$adress',`phone`='$phone',`email`='$email',`faculty`='$faculty',`picture`='$pic',`gender`='$sex' WHERE `id`='$id' ");
+    protected function updateTeachers($table,$name,$email,$adress,$phone,$faculty,$pic,$sex,$id){
+        $req = self::$_bdd->prepare("UPDATE `$table` SET `name`='$name',`email`='$email',`adress`='$adress',`phone`='$phone',`faculty`='$faculty',`picture`='$pic',`gender`='$sex' WHERE `id`='$id' ");
         $req->execute();
         $req->closeCursor(); 
     }

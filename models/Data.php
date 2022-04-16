@@ -9,9 +9,15 @@ class Data{
     private $_level;
     private $_teacher;
     private $_class;
+    private $_amphi;
     private $_phone;
     private $_sex;
     private $_adress;
+    private $_id_amphi;
+    private $_id_teacher;
+    private $_id_ue;
+    private $_time;
+    private $_day;
     private $_date;
     public function __construct(array $data){
       $this->hydrate($data);
@@ -74,7 +80,11 @@ class Data{
             $this->_class = $class;
         }
     }
-
+    public function setamphi($amphi){
+        if(is_string($amphi)){
+            $this->_amphi = $amphi;
+        }
+    }
     public function setphone($phone){
         $phone = (int) $phone;
         if($phone > 0){
@@ -89,6 +99,31 @@ class Data{
     public function setadress($adress){
         if(is_string($adress)){
             $this->_adress = $adress;
+        }
+    }
+    public function setid_ue($id_ue){
+        if(is_string($id_ue)){
+            $this->_id_ue = $id_ue;
+        }
+    }
+    public function setid_teacher($id_teacher){
+        if(is_string($id_teacher)){
+            $this->_id_teacher = $id_teacher;
+        }
+    }
+    public function setid_amphi($id_amphi){
+        if(is_string($id_amphi)){
+            $this->_id_amphi = $id_amphi;
+        }
+    }
+    public function setday($day){
+        if(is_string($day)){
+            $this->_day = $day;
+        }
+    }
+    public function settime($time){
+        if(is_string($time)){
+            $this->_time = $time;
         }
     }
     public function setdate($date){
@@ -122,6 +157,9 @@ class Data{
     public function class(){
         return $this->_class;
     }
+    public function amphi(){
+        return $this->_amphi;
+    }
     public function phone(){
         return $this->_phone;
     }
@@ -130,6 +168,21 @@ class Data{
     }
     public function adress(){
         return $this->_adress;
+    }
+    public function id_ue(){
+        return $this->_id_ue;
+    }
+    public function id_amphi(){
+        return $this->_id_amphi;
+    }
+    public function id_teacher(){
+        return $this->_id_teacher;
+    }
+    public function time(){
+        return $this->_time;
+    }
+    public function day(){
+        return $this->_day;
     }
     public function date(){
         return $this->_date;

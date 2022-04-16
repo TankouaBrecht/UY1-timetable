@@ -65,7 +65,7 @@
           </ul>
         </li> 		  
 		 
-        <li class="header nav-small-cap">Class Interface</li>
+        <li class="header nav-small-cap">Amphi & Class Interface</li>
 		  
         <li class="treeview">
           <a href="#">
@@ -76,10 +76,22 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="components_alerts.html"><i class="ti-more"></i>View</a></li>
-            <li><a href="components_badges.html"><i class="ti-more"></i>Edit</a></li>
+           <li><a href="class&action=view"><i class="ti-more"></i>View clas</a></li>
           </ul>
-        </li> 
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="grid"></i>
+            <span>Amphi</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+           <li><a href="amphi&action=view"><i class="ti-more"></i>View Amphi</a></li>
+
+          </ul>
+        </li>
 		  
 
 		<li>

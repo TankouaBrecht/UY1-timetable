@@ -128,21 +128,6 @@
 	
 <script type="text/javascript">
 
-// function fetch_select(val)
-// {
-//  $.ajax({
-//  type: 'post',
-//  url: 'test.php',
-//  data: {
-//   get_option:val,
-
-//  },
-//  success: function (response) {
-//   document.getElementById("new_select").innerHTML=response; 
-//  }
-//  });
-// }
-
 	$("#fetchBranchData").click(function() {
 
 		var branchVal = $("#branch").val();
