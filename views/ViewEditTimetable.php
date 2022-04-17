@@ -228,7 +228,7 @@ if(isset($_POST['save_info'])){
 			   <h5>3 - Amphi <span class="text-danger">*</span></h5>
 				<div class="controls">
 				<select id="select_amphi" name="amphi" class="form-control">
-			     	<option selected>Select Amphi</option>
+			     	<option value="1">Select Amphi</option>
 				</select>
 					<span class="text-danger"><?php ?></span>
 				</div>
@@ -238,13 +238,8 @@ if(isset($_POST['save_info'])){
 			   <div class="form-group">
 				<h5>4 - Select UE<span class="text-danger">*</span></h5>
 					<div class="controls">
-						<select id="ue" name="ue" class="form-control">
+						<select id="select_ue" name="ue" class="form-control">
 						<option selected>Select UE</option>
-						<?php
-									   foreach ($uelist as $ue){
-										?>
-									  <option value="<?= $ue->name() ?>"><?= $ue->name() ?></option>
-									 <?php } ?>
 						</select>
 					</div>
 			   </div>
@@ -300,9 +295,9 @@ if(isset($_POST['save_info'])){
  position: relative;
  width: 500px;
  max-width: 90%;
- background: #fff;
+ background: rgba(39, 46, 72);
  padding: 1em 2em;
- margin-top: -30px;
+ margin-top: 80px;
 }
 .modal_title{
  text-transform: uppercase;
@@ -354,8 +349,29 @@ console.log(timeVal);
  
 });
 
+$('select[name="amphi"]').on('change', function () {
+var amphiVal = $("#select_amphi").val();
+
+console.log(amphiVal);
+
+	$.ajax({
+
+	url: "Ajax/horaire_view.php",
+	method: "POST",
+	data: { amphiVal:amphiVal },
+	beforeSend: function(){},
+	success: function(response){
+
+		// console.log(response);
+		document.getElementById("select_ue").innerHTML=response; 
+	}
+
+	});
+ 
+});
+
 $('select[name="ue"]').on('change', function () {
-var ueVal = $("#ue").val();
+var ueVal = $("#select_ue").val();
 console.log(ueVal);
 
 	$.ajax({

@@ -11,7 +11,9 @@ if(isset($_POST['timeVal']) ){
 
     $query_2= "SELECT * FROM amphi ";
     $select_amphi=mysqli_query($connection,$query_2);
-
+    ?>	
+    <option selected>List of vacant amphi</option>
+    <?php
     while($row=mysqli_fetch_assoc($select_amphi)){
         $v1 = $row['name'];
         while($data=mysqli_fetch_assoc($amphi_choice)){  
@@ -26,6 +28,7 @@ if(isset($_POST['timeVal']) ){
     }
 
 }
+
 // 
 if(isset($_POST['ueVal']) ){
     $value1 = $_POST['ueVal'];
@@ -43,7 +46,30 @@ if(isset($_POST['ueVal']) ){
                 <option value="<?= $row['name']?>"><?= $row['name']?></option>
               <?php
             }
+}
 
+if( isset($_POST['amphiVal']) ){
+
+  $query_1= "SELECT * FROM course ";
+  $ue_choice=mysqli_query($connection,$query_1);
+
+  $query_2= "SELECT * FROM ue ";
+  $select_ue=mysqli_query($connection,$query_2);
+  ?>	
+  <option selected>List of available UE</option>
+  <?php
+  while($row=mysqli_fetch_assoc($select_ue)){
+      $v1 = $row['name'];
+      while($data=mysqli_fetch_assoc($ue_choice)){  
+       $v2 = $data['id_ue'];
+      }
+    if($v1 != $v2){
+          ?>	
+          <option value="<?= $row['name']?>"><?= $row['name']?></option>
+        <?php
+      }
+
+  }
 
 }
 ?>
