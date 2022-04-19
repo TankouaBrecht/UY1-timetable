@@ -25,6 +25,11 @@
         $this->getBdd();
         return $this->getbydoubleId($table, $colum1, $id1, $colum2, $id2, $obj);
     }
+        
+    public function getDatasbyTripleId($table, $colum1, $id1, $colum2, $id2, $colum3, $id3, $obj){
+        $this->getBdd();
+        return $this->getbytripleId($table, $colum1, $id1, $colum2, $id2, $colum3, $id3, $obj);
+    }
     
     // Methode POST pour stocker les informations dans la BD
 

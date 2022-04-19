@@ -12,6 +12,7 @@ function horaire($val1,$val2){
 		    $result1=$val->id_amphi();
 			$result2=$val->id_ue();
 			$result3=$val->id_teacher();
+			$result4=$val->id_class();
 			echo"<p style='font-size: 15px !important';>
 			<span> $result1 </span><br>
 			<span> $result2 </span><br>

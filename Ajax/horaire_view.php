@@ -36,16 +36,11 @@ if(isset($_POST['ueVal']) ){
     $query= "SELECT  * FROM ue  WHERE name = '$value1' ";
     $select_info=mysqli_query($connection,$query);
     while($row=mysqli_fetch_assoc($select_info)){
-            $val= $row['class'];
+      ?>	
+        <option value="<?= $row['teacher']?>"><?= $row['teacher']?></option>
+      <?php
         }
 
-        $query= "SELECT  * FROM teachers WHERE faculty = '$val' ";
-        $select_teacher=mysqli_query($connection,$query);
-        while($row=mysqli_fetch_assoc($select_teacher)){
-                ?>	
-                <option value="<?= $row['name']?>"><?= $row['name']?></option>
-              <?php
-            }
 }
 
 if( isset($_POST['amphiVal']) ){

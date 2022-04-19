@@ -59,6 +59,17 @@ abstract class Model{
         $req->closeCursor(); 
     }
 
+    protected function getbytripleId($table, $colum1, $id1, $colum2, $id2, $colum3, $id3, $obj){
+        $var = [];
+        $req = self::$_bdd->prepare("SELECT * FROM ".$table." WHERE ".$colum1." = '$id1' AND ".$colum2." = '$id2' AND ".$colum3." = '$id3' ");
+        $req->execute();
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $var[] = new $obj($data);
+        }
+        return $var;
+        $req->closeCursor(); 
+    }
+
     
     // INSERT INTO method
     protected function postTeacher($table, $obj){
@@ -108,12 +119,13 @@ abstract class Model{
     }
 
     protected function postTimetable($table, $obj){
-        $req = 'INSERT INTO '.$table.' (`id_ue`,`id_amphi`,`id_teacher`, `time`, `day`) 
-        VALUES (:ue, :amphi, :teacher, :time, :day)';
+        $req = 'INSERT INTO '.$table.' (`id_ue`,`id_amphi`,`id_teacher`,`id_class`, `time`, `day`) 
+        VALUES (:ue, :amphi, :teacher, :class, :time, :day)';
         $stmt = self::$_bdd->prepare($req);
         $stmt->bindParam(":ue", $obj['ue']);
         $stmt->bindParam(":amphi", $obj['amphi']);
         $stmt->bindParam(":teacher", $obj['teacher']);
+        $stmt->bindParam(":class", $obj['class']);
         $stmt->bindParam(":time", $obj['time']);
         $stmt->bindParam(":day", $obj['day']);
         $stmt->execute();

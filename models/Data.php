@@ -11,9 +11,11 @@ class Data{
     private $_class;
     private $_amphi;
     private $_phone;
+    private $_capacity;
     private $_sex;
     private $_adress;
     private $_id_amphi;
+    private $_id_class;
     private $_id_teacher;
     private $_id_ue;
     private $_time;
@@ -48,6 +50,12 @@ class Data{
         $semester = (int) $semester;
         if($semester > 0){
             $this->_semester = $semester;
+        }
+    }
+    public function setcapacity($capacity){
+        $capacity = (int) $capacity;
+        if($capacity > 0){
+            $this->_capacity = $capacity;
         }
     }
     public function setname($name){
@@ -116,6 +124,11 @@ class Data{
             $this->_id_amphi = $id_amphi;
         }
     }
+    public function setid_class($id_class){
+        if(is_string($id_class)){
+            $this->_id_class = $id_class;
+        }
+    }
     public function setday($day){
         if(is_string($day)){
             $this->_day = $day;
@@ -160,6 +173,9 @@ class Data{
     public function amphi(){
         return $this->_amphi;
     }
+    public function capacity(){
+        return $this->_capacity;
+    }
     public function phone(){
         return $this->_phone;
     }
@@ -174,6 +190,9 @@ class Data{
     }
     public function id_amphi(){
         return $this->_id_amphi;
+    }
+    public function id_class(){
+        return $this->_id_class;
     }
     public function id_teacher(){
         return $this->_id_teacher;

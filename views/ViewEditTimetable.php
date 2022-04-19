@@ -28,6 +28,15 @@ if(isset($_POST['save_info'])){
 	$tab['amphi'] = $_POST['amphi'];
 	$tab['ue'] = $_POST['ue'];
 	$tab['teacher'] = $_POST['teacher'];
+	
+	$ue_class=$DataManager->getInfobyId('ue', 'name', $_POST['ue'], 'Data');
+	foreach($ue_class as $row){
+		$ue_name = $row->class();
+		$ue_level = $row->level();
+	}
+	$sub_ue_name = substr($ue_name,0,4);
+	$tab['class'] =strtoupper($sub_ue_name.' '.'L'.$ue_level) ;
+
 	$DataManager->postTimes($tab);
 		header('Location:timetable'); 
 }
